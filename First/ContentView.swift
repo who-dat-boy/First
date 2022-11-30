@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isPresented: Bool = false
+    
     var body: some View {
-        Text("")
+        NavigationStack {
+            Button("Show modal") {
+                self.isPresented = true
+            }
+            .sheet(isPresented: $isPresented) {
+                ModalView()
+            }
+            .navigationTitle("Xcode and Git")
+        }
     }
 }
 
